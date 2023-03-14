@@ -23,16 +23,18 @@ RUN mkdir /home/ctf/bin && \
     cp /bin/ls /home/ctf/bin && \
     cp /bin/cat /home/ctf/bin && \
     cp /bin/echo /home/ctf/bin && \
-	cp /usr/bin/expr /home/ctf/bin
+ cp /usr/bin/expr /home/ctf/bin
 
 COPY . /
 RUN chmod +x /start.sh && \
     mv /xinetd.conf /etc/xinetd.conf && \
     mv /ctf.xinetd /etc/xinetd.d/ctf && \
     mv /src/chall . && \
-    mv /src/flag.txt . && \
+    mv /src/flag_incomplete.txt . && \
+    mv /src/other_half.txt . && \
     chmod +x chall && \
-    chmod 555 flag.txt
+    chmod 555 flag_incomplete.txt && \
+    chmod 555 other_half.txt
 
 RUN echo "Blocked by ctf_xinetd" > /etc/banner_fail
 
